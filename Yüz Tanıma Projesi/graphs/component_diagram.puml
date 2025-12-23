@@ -1,0 +1,10 @@
+@startuml
+package "Yüz Tanıma Projesi" {
+  [Web UI (HTML)] --> [BackendBridge (Python)]
+  [BackendBridge (Python)] --> [arayuz.py]
+  [arayuz.py] --> [nesnetanima.py]
+  [arayuz.py] --> [veritabani_guncelle.py]
+  [arayuz.py] --> [musteriler.db]
+  [nesnetanima.py] --> [musteriler.db]
+}
+@enduml

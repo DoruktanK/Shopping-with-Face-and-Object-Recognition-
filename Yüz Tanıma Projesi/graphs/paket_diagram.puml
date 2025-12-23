@@ -1,0 +1,35 @@
+@startuml
+
+' Projenin ana paketi
+package "Yüz Tanıma Projesi" {
+  
+  ' Backend ve Arayüz
+  package Backend {
+    [backend_bridge.py]
+    [veritabani_guncelle.py]
+  }
+  
+  package Arayuz {
+    [arayuz.py]
+    [yeni_arayuz.py]
+  }
+
+  ' Nesne Tanıma Modülü
+  package "Nesne Tanıma" {
+    [nesnetanima.py]
+  }
+
+  ' Veritabanı
+  database "musteriler.db"
+
+  ' Bağımlılıklar (kullanım bağlantıları)
+  [backend_bridge.py] --> [arayuz.py]
+  [backend_bridge.py] --> [nesnetanima.py]
+  [backend_bridge.py] --> [veritabani_guncelle.py]
+  [arayuz.py] --> [yeni_arayuz.py]
+  [nesnetanima.py] --> "musteriler.db"
+  [veritabani_guncelle.py] --> "musteriler.db"
+
+}
+
+@enduml

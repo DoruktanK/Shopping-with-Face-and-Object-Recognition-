@@ -1,0 +1,29 @@
+@startuml
+
+' BackendBridge sınıfı
+class BackendBridge {
+    +addCustomer(isim: str, soyisim: str, telefon: str)
+    +startRecognition()
+    +getCustomerList(): QVariant
+    +deleteCustomer()
+    +updateBalance()
+}
+
+' NesneTanimaDialog sınıfı
+class NesneTanimaDialog {
+    +__init__(musteri_id: int, parent)
+    +update_frame()
+    +kapat()
+    -cap: VideoCapture
+    -timer: QTimer
+    -last_detected_item: str
+    -last_detection_time: datetime
+}
+
+' Miras ilişkisi
+NesneTanimaDialog -|> QDialog
+
+' Kullanım ilişkisi
+BackendBridge --> arayuz
+
+@enduml

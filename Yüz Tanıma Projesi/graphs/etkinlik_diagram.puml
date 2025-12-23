@@ -1,0 +1,34 @@
+@startuml
+title Etkinlik Diyagramı - Yüz Tanıma ve Nesne Algılama Sistemi
+
+start
+
+:Kullanıcı sisteme giriş yapar;
+:Arayüz başlatılır;
+:Kullanıcı "Yüz ve Nesne Tanıma" başlat butonuna tıklar;
+
+if (Kullanıcı kaydı var mı?) then (Var)
+  :Kullanıcı veritabanından bilgileri çekilir;
+  :Kullanıcının yüzü tanınır;
+  :Kullanıcı bakiyesi görüntülenir;
+  :Kamera açılır;
+  :Nesne algılama başlar;
+
+  if (Nesne algılandı mı?) then (Evet)
+    :Nesne adı ve fiyatı algılanır;
+    :Bakiyeden düşüm yapılır;
+    :Yeni bakiye veritabanına kaydedilir;
+  else (Hayır)
+    :Hata mesajı gösterilir;
+  endif
+
+  :Kamera kapanır;
+  :İşlem tamamlandı mesajı gösterilir;
+else (Yok)
+  :Kullanıcı bilgileri alınır (isim, soyisim, telefon);
+  :Yeni müşteri veritabanına kaydedilir;
+  :Kullanıcı yüz fotoğrafı alınır ve kayıt yapılır;
+endif
+
+stop
+@enduml

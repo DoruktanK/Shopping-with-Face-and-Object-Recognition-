@@ -1,0 +1,18 @@
+@startuml
+actor Kullanici
+participant "BackendBridge" as BB
+participant "arayuz.py" as Arayuz
+participant "NesneTanimaDialog" as NesneDialog
+database "musteriler.db" as DB
+
+Kullanici -> BB: startRecognition()
+BB -> Arayuz: yuz_ve_nesne_tanima()
+Arayuz -> Arayuz: yuz_tanimla()
+alt Yüz tanındı
+    Arayuz -> NesneDialog: NesneTanimaDialog açılır
+    NesneDialog -> NesneDialog: update_frame()
+    NesneDialog -> DB: musteriden_bakiye_dus()
+    DB --> NesneDialog: yeni bakiye
+end
+
+@enduml

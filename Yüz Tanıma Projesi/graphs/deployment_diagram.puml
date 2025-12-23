@@ -1,0 +1,10 @@
+@startuml
+node Kullanici {
+  [Web Browser (HTML)]
+}
+node Sunucu {
+  [Python (Flask + PyQt + Face/Nesne Tanıma)]
+  database "musteriler.db"
+}
+Kullanici --> Sunucu: HTTP + QWebChannel
+@enduml
